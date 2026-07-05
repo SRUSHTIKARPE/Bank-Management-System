@@ -54,6 +54,41 @@ public class Account {
 
     }
 
+    public void deposit(double amount) {
+
+    if(amount <= 0) {
+        System.out.println("Invalid amount.");
+        return;
+    }
+
+    balance += amount;
+
+    System.out.println("₹" + amount + " deposited successfully.");
+    System.out.println("Updated Balance : Rs" + balance);
+}
+
+public void withdraw(double amount) {
+
+    if(amount <= 0) {
+        System.out.println("Invalid amount.");
+        return;
+    }
+
+    if(amount > balance) {
+        System.out.println("Insufficient Balance.");
+        return;
+    }
+
+    balance -= amount;
+
+    System.out.println("₹" + amount + " withdrawn successfully.");
+    System.out.println("Remaining Balance : Rs" + balance);
+}
+
+public void checkBalance() {
+    System.out.println("Current Balance : Rs" + balance);
+}
+
     
 
 

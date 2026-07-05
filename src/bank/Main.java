@@ -66,6 +66,25 @@ balance,
 customer1);
 bank.createAccount(account1);
 
-bank.displayAllAccounts();
-    }
+
+    account1.checkBalance();
+
+    System.out.print("Enter amount to deposit: ");
+double depositAmount = sc.nextDouble();
+account1.deposit(depositAmount);
+
+System.out.print("Enter amount to withdraw: ");
+double withdrawAmount = sc.nextDouble();
+account1.withdraw(withdrawAmount);
+
+    account1.checkBalance();
+
+    bank.displayAllAccounts();
+
+sc.close();
 }
+}
+
+
+
+    

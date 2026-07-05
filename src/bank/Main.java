@@ -4,26 +4,23 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Bank bank = new Bank(
-                "ABC Bank",
-                "Sangamner");
+        Bank bank = new Bank("ABC Bank","Sangamner");
 
-        Customer customer = new Customer(
-                1,
-                "Srushti Karpe",
-                "9876543210",
-                "srushti@gmail.com",
-                "Sangamner");
+Customer customer1 = new Customer(
+1,
+"Snehal",
+"9876543210",
+"snehal@gmail.com",
+"Sangamner");
 
-        Account account = new Account(
-                1001,
-                "Savings",
-                5000,
-                customer);
+Account account1 = new Account(
+1001,
+"Savings",
+5000,
+customer1);
 
-        bank.displayBankDetails();
-        System.out.println();
+bank.createAccount(account1);
 
-        account.displayAccountDetails();
+bank.displayAllAccounts();
     }
 }

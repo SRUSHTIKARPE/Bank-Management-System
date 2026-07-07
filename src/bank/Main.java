@@ -37,103 +37,25 @@ switch(choice){
 case 1:
     System.out.println("Enter customer details : ");
 
-int customerId;
-do {
-    System.out.print("Customer ID: ");
-    customerId = sc.nextInt();
+int customerId = InputValidator.getInt(sc, "Customer ID: ");
 
-    if (customerId <= 0) {
-        System.out.println("Customer ID must be greater than 0.");
-    }
+String name = InputValidator.getString(sc, "Name: ");
 
-} while (customerId <= 0);
-sc.nextLine();
+String phoneNumber = InputValidator.getPhone(sc);
 
-String name;
-do {
-    System.out.print("Name: ");
-    name = sc.nextLine();
+String email = InputValidator.getEmail(sc);
 
-    if (name.trim().isEmpty()) {
-        System.out.println("Name cannot be empty.");
-    }
-} while (name.trim().isEmpty());
-
-
-String phoneNumber;
-do {
-    System.out.print("Phone Number: ");
-    phoneNumber = sc.nextLine().trim();
-
-    if (!phoneNumber.matches("\\d{10}")) {
-        System.out.println("Phone number must contain exactly 10 digits.");
-    }
-
-} while (!phoneNumber.matches("\\d{10}"));
-
-
-String email;
-do {
-    System.out.print("Email: ");
-    email = sc.nextLine().trim();
-
-    if (!email.contains("@") || !email.contains(".")) {
-        System.out.println("Enter a valid email address.");
-    }
-
-} while (!email.contains("@") || !email.contains("."));
-
-String address;
-do {
-    System.out.print("Address: ");
-    address = sc.nextLine();
-
-    if (address.trim().isEmpty()) {
-        System.out.println("Address cannot be empty.");
-    }
-} while (address.trim().isEmpty());
+String address = InputValidator.getString(sc, "Address: ");
 
 
 
-    System.out.println("Enter Account details :");
+   System.out.println("Enter Account details :");
         
-int accountNumber;
-while (true) {
+int accountNumber = InputValidator.getInt(sc, "Account Number: ");
 
-    System.out.print("Account Number: ");
+String accountType = InputValidator.getString(sc, "Account Type: ");
 
-    if (sc.hasNextInt()) {
-
-        accountNumber = sc.nextInt();
-        sc.nextLine();   // consume newline
-
-        if (accountNumber > 0) {
-            break;
-        }
-
-        System.out.println("Account Number must be greater than 0.");
-
-    } else {
-
-        System.out.println("Please enter a valid number.");
-        sc.nextLine();   // discard invalid input
-
-    }
-}
-
-        System.out.print("Account Type:");
-        String accountType=sc.nextLine();
-
-double balance;
-do {
-    System.out.print("Balance: ");
-    balance = sc.nextDouble();
-
-    if (balance < 0) {
-        System.out.println("Balance cannot be negative.");
-    }
-
-} while (balance < 0);
+double balance = InputValidator.getDouble(sc, "Balance: ");
 
 Customer customer1 = new Customer(
 customerId,

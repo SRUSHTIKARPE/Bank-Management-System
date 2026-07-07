@@ -57,20 +57,20 @@ public class Account {
     public void deposit(double amount) {
 
     if(amount <= 0) {
-        System.out.println("Invalid amount.");
+        System.out.println("Deposit amount must be greater than 0.");
         return;
     }
 
     balance += amount;
 
-    System.out.println("₹" + amount + " deposited successfully.");
+    System.out.println("Rs" + amount + " deposited successfully.");
     System.out.println("Updated Balance : Rs" + balance);
 }
 
 public void withdraw(double amount) {
 
     if(amount <= 0) {
-        System.out.println("Invalid amount.");
+        System.out.println("Withdrawal amount must be greater than 0.");
         return;
     }
 

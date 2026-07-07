@@ -32,7 +32,7 @@ public class Bank {
     System.out.println("Branch    : " + branchName);
     }
 
-    public void createAccount(Account account){
+public void createAccount(Account account){
 
     accounts.add(account);
 
@@ -40,7 +40,7 @@ public class Bank {
 
     }
 
-    public void displayAllAccounts(){
+public void displayAllAccounts(){
 
         if(accounts.isEmpty()){
             System.out.println("No Accounts Found.");
@@ -69,6 +69,53 @@ public Account searchAccount(int accountNumber) {
     return null;
 }    
 
+
+public void deposit(int accountNumber, double amount) {
+
+    Account account = searchAccount(accountNumber);
+
+    if (account != null) {
+        account.deposit(amount);
+    } else {
+        System.out.println("Account Not Found.");
+    }
+}
+
+public void withdraw(int accountNumber, double amount) {
+
+    Account account = searchAccount(accountNumber);
+
+    if (account != null) {
+        account.withdraw(amount);
+    } else {
+        System.out.println("Account Not Found.");
+    }
+}
+
+public void checkBalance(int accountNumber) {
+
+    Account account = searchAccount(accountNumber);
+
+    if (account != null) {
+        account.checkBalance();
+    } else {
+        System.out.println("Account Not Found.");
+    }
+}
+
+public boolean deleteAccount(int accountNumber) {
+
+    Account account = searchAccount(accountNumber);
+
+    if (account != null) {
+        accounts.remove(account);
+        System.out.println("Account deleted successfully.");
+        return true;
+    }
+
+    System.out.println("Account Not Found.");
+    return false;
+}
 
 
 }

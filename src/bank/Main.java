@@ -24,7 +24,8 @@ while (!exit) {
     System.out.println("5. Search Account");
     System.out.println("6. Display All Accounts");
     System.out.println("7. Delete Account");
-    System.out.println("8. Exit");
+    System.out.println("8. Transfer Money");
+    System.out.println("9. Exit");
     System.out.print("Enter your choice : ");
 
     int choice = sc.nextInt();
@@ -51,7 +52,19 @@ String address = InputValidator.getString(sc, "Address: ");
 
    System.out.println("Enter Account details :");
         
-int accountNumber = InputValidator.getInt(sc, "Account Number: ");
+int accountNumber;
+
+while (true) {
+
+    accountNumber = InputValidator.getInt(sc, "Account Number: ");
+
+    // Check if account already exists
+    if (bank.searchAccount(accountNumber) == null) {
+        break;      // Account number is unique
+    }
+
+    System.out.println("Account Number already exists. Please enter another account number.");
+}
 
 String accountType = InputValidator.getString(sc, "Account Type: ");
 
@@ -88,7 +101,7 @@ case 2:
 
 case 3:
 
-System.out.print("Enter Account Number: ");
+    System.out.print("Enter Account Number: ");
     accNo = sc.nextInt();
 
     System.out.print("Enter Amount: ");
@@ -154,6 +167,21 @@ case 7:
     break;
 
 case 8:
+    
+    int fromAccount =
+        InputValidator.getInt(sc, "From Account Number: ");
+
+    int toAccount =
+        InputValidator.getInt(sc, "To Account Number: ");
+
+    double amt =
+        InputValidator.getDouble(sc, "Amount: ");
+
+    bank.transferMoney(fromAccount, toAccount, amt);
+
+    break;
+
+case 9:
     exit = true;
     System.out.println("Thank You for using Bank Management System.");
 

@@ -89,6 +89,16 @@ public void checkBalance() {
     System.out.println("Current Balance : Rs" + balance);
 }
 
+// Adds amount to balance without printing any message
+public void addBalance(double amount) {
+    balance += amount;
+}
+
+// Deducts amount from balance without printing any message
+public void deductBalance(double amount) {
+    balance -= amount;
+}
+
     
 
 

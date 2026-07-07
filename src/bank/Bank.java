@@ -117,5 +117,52 @@ public boolean deleteAccount(int accountNumber) {
     return false;
 }
 
+public void transferMoney(int fromAccountNumber, int toAccountNumber, double amount) {
+
+    // Search sender account
+    Account sender = searchAccount(fromAccountNumber);
+
+    // Search receiver account
+    Account receiver = searchAccount(toAccountNumber);
+
+    // Check whether both accounts exist
+    if (sender == null) {
+        System.out.println("Sender Account Not Found.");
+        return;
+    }
+
+    if (receiver == null) {
+        System.out.println("Receiver Account Not Found.");
+        return;
+    }
+
+    // Prevent transferring to the same account
+    if (fromAccountNumber == toAccountNumber) {
+        System.out.println("Cannot transfer to the same account.");
+        return;
+    }
+
+    // Check amount
+    if (amount <= 0) {
+        System.out.println("Invalid Amount.");
+        return;
+    }
+
+    // Check balance
+    if (sender.getBalance() < amount) {
+        System.out.println("Insufficient Balance.");
+        return;
+    }
+
+    // Perform transfer
+    sender.deductBalance(amount);
+    receiver.addBalance(amount);
+
+    System.out.println("\nTransfer Successful!");
+    System.out.println("Transferred Amount : Rs." + amount);
+    System.out.println("From Account       : " + fromAccountNumber);
+    System.out.println("To Account         : " + toAccountNumber);
+}
+
 
 }

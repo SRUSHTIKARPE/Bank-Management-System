@@ -8,7 +8,42 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         Bank bank = new Bank("ABC Bank","Sangamner");
-        System.out.println("Enter customer details : ");
+
+
+/*    account1.checkBalance();
+
+    System.out.print("Enter amount to deposit: ");
+double depositAmount = sc.nextDouble();
+account1.deposit(depositAmount);
+
+System.out.print("Enter amount to withdraw: ");
+double withdrawAmount = sc.nextDouble();
+account1.withdraw(withdrawAmount);
+
+    account1.checkBalance(); */
+   
+boolean exit = false;
+
+while (!exit) {
+
+    System.out.println("\n====================================");
+    System.out.println("      BANK MANAGEMENT SYSTEM");
+    System.out.println("====================================");
+    System.out.println("1. Create Account");
+    System.out.println("2. Display All Accounts");
+    System.out.println("3. Search Account");
+    System.out.println("4. Exit");
+    System.out.print("Enter your choice : ");
+
+    int choice = sc.nextInt();
+    sc.nextLine();
+
+
+
+switch(choice){
+
+case 1:
+    System.out.println("Enter customer details : ");
 
         System.out.print("Customer ID:");
         int customerId=sc.nextInt();
@@ -66,21 +101,14 @@ balance,
 customer1);
 bank.createAccount(account1);
 
+    break;
 
-    account1.checkBalance();
-
-    System.out.print("Enter amount to deposit: ");
-double depositAmount = sc.nextDouble();
-account1.deposit(depositAmount);
-
-System.out.print("Enter amount to withdraw: ");
-double withdrawAmount = sc.nextDouble();
-account1.withdraw(withdrawAmount);
-
-    account1.checkBalance();
-
+case 2:
     bank.displayAllAccounts();
 
+    break;
+
+case 3:
     System.out.print("Enter account number to search: ");
 int searchNumber = sc.nextInt();
 
@@ -99,9 +127,26 @@ else {
 
 }
 
+    break;
+
+case 4:
+
+    exit = true;
+    System.out.println("Thank You for using Bank Management System.");
+    break;
+
+default:
+
+    System.out.println("Invalid Choice.");
+
+}
+}
 sc.close();
 }
 }
+
+
+
 
 
 

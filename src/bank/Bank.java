@@ -57,5 +57,15 @@ public class Bank {
 
     }
 
-    
+public Account searchAccount(int accountNumber) {
+
+    for (Account account : accounts) {
+
+        if (account.getAccountNumber() == accountNumber) {
+            return account;
+        }
+    }
+
+    return null;
+}    
 }

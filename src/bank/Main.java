@@ -81,6 +81,24 @@ account1.withdraw(withdrawAmount);
 
     bank.displayAllAccounts();
 
+    System.out.print("Enter account number to search: ");
+int searchNumber = sc.nextInt();
+
+Account foundAccount = bank.searchAccount(searchNumber);
+
+if (foundAccount != null) {
+
+    System.out.println("\nAccount Found!");
+
+    foundAccount.displayAccountDetails();
+
+}
+else {
+
+    System.out.println("Account Not Found.");
+
+}
+
 sc.close();
 }
 }

@@ -1,5 +1,8 @@
 package bank;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
 public class Account {
 
     private int accountNumber;
@@ -54,20 +57,35 @@ public class Account {
 
     }
 
-    public void deposit(double amount) {
+    public void deposit(int accountNumber, double amount) {
 
     if(amount <= 0) {
         System.out.println("Invalid amount.");
         return;
     }
 
-    balance += amount;
+    //balance += amount;
+    
+    try{
+    Connection con = DBConnection.getConnection();
+
+    String query = "UPDATE account SET balance = balance + ? WHERE account_number = ?";
+
+    PreparedStatement ps = con.prepareStatement(query);
+
+    ps.setDouble(1, amount);       // First ? = amount
+    ps.setInt(2, accountNumber);   // Second ? = account number
+
+    int rows = ps.executeUpdate();
+    }catch(Exception e){
+        e.printStackTrace();
+    }
 
     System.out.println("₹" + amount + " deposited successfully.");
     System.out.println("Updated Balance : Rs" + balance);
 }
 
-public void withdraw(double amount) {
+public void withdraw(int accountNumber,double amount) {
 
     if(amount <= 0) {
         System.out.println("Invalid amount.");
@@ -79,7 +97,22 @@ public void withdraw(double amount) {
         return;
     }
 
-    balance -= amount;
+    //balance -= amount;
+
+    try{
+    Connection con = DBConnection.getConnection();
+
+    String query = "UPDATE account SET balance = balance - ? WHERE account_number = ?";
+
+    PreparedStatement ps = con.prepareStatement(query);
+
+    ps.setDouble(1, amount);       // First ? = amount
+    ps.setInt(2, accountNumber);   // Second ? = account number
+
+    int rows = ps.executeUpdate();
+    }catch(Exception e){
+        e.printStackTrace();
+    }
 
     System.out.println("₹" + amount + " withdrawn successfully.");
     System.out.println("Remaining Balance : Rs" + balance);
